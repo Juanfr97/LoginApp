@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LoginApp</string>
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="log_in">Iniciar sesion</string>
+    <string name="correo_electronico">Correo Electronico</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+</resources>
