@@ -1,4 +1,4 @@
-package com.example.loginapp
+package com.example.loginapp.presentation.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import com.example.loginapp.activities.HomeActivity
-import com.example.loginapp.mockdata.MockData
+import com.example.loginapp.R
+import com.example.loginapp.data.mockdata.MockData
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("mypref", MODE_PRIVATE)
         val isLogged = sharedPreferences.getBoolean("isLogged",false)
         if(isLogged){
-            val intent = Intent(this@MainActivity,HomeActivity::class.java)
+            val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             val editor = sharedPreferences.edit()
             editor.putBoolean("isLogged",true)
             editor.apply()
-            val intent = Intent(this@MainActivity,HomeActivity::class.java)
+            val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
