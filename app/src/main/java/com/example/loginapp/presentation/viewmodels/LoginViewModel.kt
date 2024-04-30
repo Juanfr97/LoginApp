@@ -19,7 +19,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences,
-    private val userDao : UserDao,
     private val isUserLogged : IsUserLogged
 ) : ViewModel() {
 

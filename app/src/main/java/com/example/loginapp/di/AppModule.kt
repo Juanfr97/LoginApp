@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.loginapp.data.LoginDb
 import com.example.loginapp.data.mockdata.MockData
+import com.example.loginapp.domain.use_cases.IsUserLogged
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +39,7 @@ object AppModule {
         return INSTANCE ?: synchronized(this){
             val instance = INSTANCE
             if(instance != null){
-                return instance
+                 instance
             }
             else{
                 var callback = object : RoomDatabase.Callback(){
@@ -51,15 +52,25 @@ object AppModule {
                         }
                     }
                 }
-                return Room.databaseBuilder(
+                 Room.databaseBuilder(
                     context,
                     LoginDb::class.java,
                     "login_db"
                 )
                     .addCallback(callback)
-                    .build()
+                    .build().also {
+                        INSTANCE = it
+                     }
             }
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoginUseCase(
+        loginDb: LoginDb
+    ) : IsUserLogged {
+        return IsUserLogged(loginDb.userDao())
     }
 
 }

@@ -1,8 +1,9 @@
 package com.example.loginapp.domain.use_cases
 
 import com.example.loginapp.data.dao.UserDao
+import javax.inject.Inject
 
-class IsUserLogged(
+class IsUserLogged @Inject constructor(
     private val userDao: UserDao
 ) {
     suspend operator fun invoke(email:String,password:String):Boolean{
